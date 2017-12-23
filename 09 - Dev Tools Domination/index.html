@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Console Tricks!</title>
+</head>
+<body>
+
+  <p onClick="makeGreen()">×BREAK×DOWN×</p>
+
+  <script>
+    const dogs = [{ name: 'Snickers', age: 2 }, { name: 'hugo', age: 8 }];
+    const p = document.querySelector('p');
+
+    function makeGreen() {
+      p.style.color = '#BADA55';
+      p.style.fontSize = '50px';
+    }
+
+    // Regular
+    console.log('Hi.');
+
+    // Interpolated
+    console.log('Oh, %s Mark!', 'hi');    
+
+    // Styled
+    console.log('%c You are tearing me apart, Lisa!', 'font-size: 20px; color: red;');        
+
+    // warning!
+    console.warn('Aw peas.')
+
+    // Error :|
+    console.error('AW PEAS FOR REAL, YO')
+
+    // Info
+    console.info('Vending machines are deadlier than sharks.')
+
+    // Testing
+    console.assert(1 === 2, 'Wrongo Bongo');
+
+    // clearing
+    console.clear();
+
+    // Viewing DOM Elements
+    console.log(p);
+    console.dir(p);
+
+    // Grouping together
+    dogs.forEach(function(pup) {
+      console.groupCollapsed(`${pup.name}`);
+      console.log(`Say hi to ${pup.name}!`);
+      console.log(`pup is ${pup.age} years old.`);
+      console.log(`That makes pup ${pup.age * 7} in dog years!`);
+      console.groupEnd(`${pup.name}`);      
+    })
+
+    // counting
+    console.count('pup');
+
+    // timing
+    console.time('fetching data');
+    fetch('https://api.github.com/users/moonshoespatty')
+    .then(data => data.json())
+    .then(data => {
+      console.timeEnd('fetching data');
+      console.log(data);
+    });
+
+    console.table(dogs);
+
+  </script>
+</body>
+</html>
