@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Key Detection</title>
+	<!-- <script type="text/javascript" src="http://www.cornify.com/js/cornify.js"></script> -->
+	<style>
+		body {
+			background-color: black;
+		}
+		h1, p {
+			color: white;
+			font-family: Helvetica, Arial, sans-serif;
+			text-align: center;
+		}
+		h1 {
+			margin: 0 100px;			
+			margin-top: 30%;
+			font-variant: small-caps;			
+		}
+		h1 em {
+			color: #12B4E9;
+		}
+		p {
+			margin-top: 50px;
+		}
+		p span {
+			color: black;
+		}
+	</style>
+</head>
+<body>
+	<div id="content">
+		<h1>Can You Figure Out the <em>Secret Code</em>?</h1>
+		<p>Hint: <span>'secretcode'</span></p>
+	</div>
+	<script>
+		pressed = [];
+		secretCode = 'secretcode';
+		const contentDiv = document.querySelector('#content');
+		const secretContent = `<h1 class="secret">CONGRATULATIONS!!!</h1>
+		<p class="secret">You're probably, like, a genius or something</p>`;
+
+		function keyinAround(e) {
+			pressed.push(e.key);
+			if (pressed.join('').includes(secretCode)) {
+				contentDiv.innerHTML = secretContent;
+			}
+		}
+
+		window.addEventListener('keyup', keyinAround);
+	</script>
+</body>
+</html>
